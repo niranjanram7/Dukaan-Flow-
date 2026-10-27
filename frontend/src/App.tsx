@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { ErrorBoundary } from './components/common/ErrorBoundary'
 import { AuthProvider } from './context/AuthContext'
+import { ThemeProvider } from './context/ThemeContext'
 import { ProtectedRoute } from './components/auth/ProtectedRoute'
 import { LoginPage } from './features/auth/LoginPage'
 import { PrivacyPage } from './features/legal/PrivacyPage'
@@ -19,8 +20,9 @@ import { ImportWizardPage } from './features/imports/ImportWizardPage'
 export function App() {
   return (
     <ErrorBoundary>
-      <BrowserRouter>
-        <AuthProvider>
+      <ThemeProvider>
+        <BrowserRouter>
+          <AuthProvider>
           <Routes>
             {/* Public Authentication & Legal Routes */}
             <Route path="/login" element={<LoginPage />} />
@@ -46,6 +48,7 @@ export function App() {
           </Routes>
         </AuthProvider>
       </BrowserRouter>
+      </ThemeProvider>
     </ErrorBoundary>
   )
 }

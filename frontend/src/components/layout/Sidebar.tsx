@@ -45,15 +45,15 @@ export const Sidebar: React.FC = () => {
     .join('') || 'DF'
 
   return (
-    <aside className="hidden md:flex flex-col w-[240px] shrink-0 bg-white border-r border-[#E8EAED] min-h-screen z-20">
+    <aside className="hidden md:flex flex-col w-[240px] shrink-0 bg-[var(--card-bg)] border-r border-[var(--card-border)] min-h-screen z-20 transition-colors duration-200">
       {/* Brand Header */}
-      <div className="h-[72px] px-6 flex items-center gap-3 border-b border-[#E8EAED]">
-        <div className="w-9 h-9 rounded-lg bg-[#E8F7EF] flex items-center justify-center text-[#16A36A]">
+      <div className="h-[72px] px-6 flex items-center gap-3 border-b border-[var(--card-border)]">
+        <div className="w-10 h-10 rounded-xl bg-[var(--primary-light)] border border-[var(--primary-border)] flex items-center justify-center text-[var(--primary)] shadow-xs">
           <Store className="w-5 h-5" />
         </div>
         <div>
-          <h1 className="text-base font-bold text-[#17191C] leading-none tracking-tight">DukaanFlow</h1>
-          <p className="text-[11px] text-[#737780] font-medium mt-1">Merchant Precision</p>
+          <h1 className="text-base font-bold text-[var(--text-main)] leading-none tracking-tight">DukaanFlow</h1>
+          <p className="text-[11px] text-[var(--text-muted)] font-medium mt-1">Merchant Precision</p>
         </div>
       </div>
 
@@ -67,10 +67,10 @@ export const Sidebar: React.FC = () => {
               to={item.to}
               end={item.to === '/'}
               className={({ isActive }) =>
-                `flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-[13px] font-medium transition-colors ${
+                `flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-150 ${
                   isActive
-                    ? 'bg-[#E8F7EF] text-[#16A36A] font-semibold border-l-2 border-[#16A36A]'
-                    : 'text-[#737780] hover:text-[#17191C] hover:bg-[#F0F2F5]'
+                    ? 'bg-[var(--primary-light)] text-[var(--primary)] font-bold shadow-xs border-l-3 border-[var(--primary)]'
+                    : 'text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--card-bg-elevated)]'
                 }`
               }
             >
@@ -82,14 +82,14 @@ export const Sidebar: React.FC = () => {
       </nav>
 
       {/* Merchant / Business Badge */}
-      <div className="p-4 border-t border-[#E8EAED] bg-[#F7F8FA]">
+      <div className="p-4 border-t border-[var(--card-border)] bg-[var(--card-bg-subtle)]">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-full bg-[#16A36A] text-white flex items-center justify-center text-xs font-bold shrink-0">
+          <div className="w-9 h-9 rounded-xl bg-[var(--primary)] text-white flex items-center justify-center text-xs font-bold shrink-0 shadow-sm">
             {initials}
           </div>
           <div className="min-w-0 flex-1">
-            <p className="text-xs font-semibold text-[#17191C] truncate">{displayName}</p>
-            <div className="flex items-center gap-1 text-[10px] text-[#16A36A] font-medium mt-0.5">
+            <p className="text-xs font-semibold text-[var(--text-main)] truncate">{displayName}</p>
+            <div className="flex items-center gap-1 text-[10px] text-[var(--primary)] font-medium mt-0.5">
               <ShieldCheck className="w-3 h-3" />
               <span className="truncate">{user?.full_name || 'Verified Store (INR)'}</span>
             </div>
@@ -99,7 +99,7 @@ export const Sidebar: React.FC = () => {
         <button
           type="button"
           onClick={logout}
-          className="w-full mt-3 flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-lg text-xs font-semibold text-[#D9383A] bg-white border border-[#F2C0C1] hover:bg-red-50 transition-colors shadow-2xs cursor-pointer"
+          className="w-full mt-3 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-semibold text-red-600 dark:text-red-400 bg-[var(--card-bg)] border border-red-200 dark:border-red-900/40 hover:bg-red-50 dark:hover:bg-red-950/30 transition-all cursor-pointer shadow-xs"
         >
           <LogOut className="w-3.5 h-3.5" />
           <span>Sign Out</span>
